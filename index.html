@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KarmaTheory</title>
+
+  <!-- Redirect (3 seconds) -->
+  <meta http-equiv="refresh" content="3;url=http://linktr.ee/thekarmatheory" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#070A12;
+      --bg2:#0B1022;
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --accent:#A78BFA; /* violet */
+      --accent2:#22D3EE; /* cyan */
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 15%, rgba(167,139,250,.22), transparent 55%),
+        radial-gradient(700px 450px at 80% 20%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(650px 450px at 50% 95%, rgba(167,139,250,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:20px;
+    }
+    @media (max-width: 860px){
+      .wrap{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(135deg, rgba(167,139,250,.45), rgba(34,211,238,.35), rgba(167,139,250,.25));
+      filter: blur(28px);
+      opacity:.35;
+      z-index:0;
+    }
+    .inner{position:relative; z-index:1; padding:28px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .logo{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(34,211,238,.85));
+      box-shadow: 0 12px 30px rgba(167,139,250,.22);
+      font-weight:800;
+      letter-spacing:.5px;
+      color:#081018;
+      user-select:none;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(28px, 3.8vw, 44px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 0;
+    }
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.78);
+      font-size:12px;
+      letter-spacing:.01em;
+    }
+    .cta{
+      margin-top:22px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:active{transform: translateY(1px)}
+    .primary{
+      background: linear-gradient(135deg, rgba(167,139,250,1), rgba(34,211,238,1));
+      color:#071018;
+      box-shadow: 0 16px 35px rgba(34,211,238,.12);
+    }
+    .ghost{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.88);
+    }
+    .small{
+      color:rgba(255,255,255,.62);
+      font-size:12px;
+      margin-top:12px;
+    }
+    .right .inner{
+      padding:22px;
+    }
+    .stat{
+      display:flex;
+      gap:12px;
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      margin-bottom:12px;
+    }
+    .dot{
+      width:12px; height:12px;
+      border-radius:50%;
+      background: rgba(34,211,238,.95);
+      margin-top:4px;
+      box-shadow: 0 0 0 6px rgba(34,211,238,.12);
+    }
+    .stat h3{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.01em;
+    }
+    .stat p{
+      margin:6px 0 0 0;
+      color:rgba(255,255,255,.68);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .countdown{
+      font-weight:800;
+      color: rgba(255,255,255,.92);
+      letter-spacing:.02em;
+    }
+    .footer{
+      margin-top:10px;
+      color: rgba(255,255,255,.52);
+      font-size:12px;
+      text-align:center;
+    }
+    .icon{
+      width:18px; height:18px; display:inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card left">
+      <div class="inner">
+        <div class="brand">
+          <div class="logo">KT</div>
+          <div>
+            <div style="font-weight:800; letter-spacing:.06em; font-size:12px; color:rgba(255,255,255,.7); text-transform:uppercase;">
+              KarmaTheory
+            </div>
+            <div style="font-size:12px; color:rgba(255,255,255,.55); margin-top:2px;">
+              Links • Reels • Quotes • Growth
+            </div>
+          </div>
+        </div>
+
+        <h1>Build your energy.<br/>Your reality follows.</h1>
+        <p class="sub">
+          Redirecting you to the official KarmaTheory links. If it doesn’t happen automatically,
+          tap the button below.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">Karma</span>
+          <span class="pill">Healing</span>
+          <span class="pill">Self-love</span>
+          <span class="pill">Mindset</span>
+          <span class="pill">Growth</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" id="go" href="http://linktr.ee/thekarmatheory" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M8 5l8 7-8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Continue to Linktree
+          </a>
+
+          <button class="btn ghost" id="copy">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M9 9h10v10H9V9Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Copy link
+          </button>
+        </div>
+
+        <div class="small" id="status">
+          Auto-redirect in <span class="countdown" id="t">3</span> seconds…
+        </div>
+      </div>
+    </section>
+
+    <aside class="card right">
+      <div class="inner">
+        <div class="stat">
+          <div class="dot"></div>
+          <div>
+            <h3>Official destination</h3>
+            <p>All KarmaTheory links live here. Safe redirect to the verified page.</p>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="dot" style="background: rgba(167,139,250,.95); box-shadow: 0 0 0 6px rgba(167,139,250,.12);"></div>
+          <div>
+            <h3>Lightweight & fast</h3>
+            <p>Single file site. Works great on GitHub Pages / Netlify / Vercel.</p>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="dot" style="background: rgba(255,255,255,.85); box-shadow: 0 0 0 6px rgba(255,255,255,.10);"></div>
+          <div>
+            <h3>Redirect fallback</h3>
+            <p>If redirects are blocked, the button still takes you there instantly.</p>
+          </div>
+        </div>
+
+        <div class="footer">© <span id="y"></span> KarmaTheory</div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const TARGET = "http://linktr.ee/thekarmatheory";
+
+    // Countdown + redirect
+    let t = 3;
+    const tEl = document.getElementById("t");
+    const statusEl = document.getElementById("status");
+
+    const tick = setInterval(() => {
+      t -= 1;
+      if (tEl) tEl.textContent = String(Math.max(t, 0));
+      if (t <= 0) {
+        clearInterval(tick);
+        statusEl.textContent = "Redirecting…";
+        window.location.href = TARGET;
+      }
+    }, 1000);
+
+    // Copy link button
+    document.getElementById("copy")?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(TARGET);
+        statusEl.textContent = "Copied ✅";
+        setTimeout(() => statusEl.innerHTML = 'Auto-redirect in <span class="countdown" id="t">0</span> seconds…', 1200);
+      } catch (e) {
+        alert("Copy failed. Here it is:\n" + TARGET);
+      }
+    });
+
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
