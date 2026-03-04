@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Pinterest OAuth</title></head>
+  <body style="font-family:system-ui;padding:24px;">
+    <h2>Pinterest OAuth</h2>
+    <p>Copy the <b>code</b> value from the URL bar.</p>
+    <pre id="out"></pre>
+    <script>
+      const p = new URLSearchParams(location.search);
+      document.getElementById("out").textContent =
+        "code=" + (p.get("code") || "") + "\nstate=" + (p.get("state") || "");
+    </script>
+  </body>
+</html>
